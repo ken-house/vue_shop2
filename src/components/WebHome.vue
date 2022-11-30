@@ -10,7 +10,8 @@
     <el-container>
       <el-aside :width="isCollapse?'64px':'200px'">
         <div class="toggle-button" @click="toggleCollapse">|||</div>
-        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF" :unique-opened="true" :collapse="isCollapse" :collapse-transition="false" :router="true">
+        <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF" :unique-opened="true" :collapse="isCollapse" :collapse-transition="false" :router="true"
+          :default-active="currentPath">
           <!-- 一级菜单 -->
           <el-submenu :index="item.id+''" v-for="item in menuList" :key="item.id">
             <!-- 一级菜单模板 -->
@@ -19,7 +20,7 @@
               <span>{{item.name}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="subItem.path" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="selectMenu(subItem.path)">
               <i class="el-icon-menu"></i>
               <span>{{subItem.name}}</span>
             </el-menu-item>
@@ -39,11 +40,13 @@ export default {
   data () {
     return {
       menuList: [],
-      isCollapse: false
+      isCollapse: false,
+      currentPath: ''
     }
   },
   created () {
     this.getMenuList()
+    this.currentPath = window.sessionStorage.getItem('currentMenuPath')
   },
   methods: {
     logout () {
@@ -59,6 +62,10 @@ export default {
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
+    },
+    selectMenu (path) {
+      window.sessionStorage.setItem('currentMenuPath', path)
+      this.currentPath = path
     }
   }
 }

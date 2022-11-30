@@ -1,7 +1,6 @@
 import {
-  Aside,
-  Button,
-  Container,
+  Aside, Breadcrumb,
+  BreadcrumbItem, Button, Card, Col, Container,
   Form,
   FormItem,
   Header,
@@ -10,8 +9,8 @@ import {
   Menu,
   MenuItem,
   MenuItemGroup,
-  Message,
-  Submenu
+  Message, Pagination, Row, Submenu, Switch, Table, TableColumn,
+  Tooltip
 } from 'element-ui'
 import Vue from 'vue'
 
@@ -27,4 +26,14 @@ Vue.use(Menu)
 Vue.use(MenuItem)
 Vue.use(Submenu)
 Vue.use(MenuItemGroup)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Switch)
+Vue.use(Tooltip)
+Vue.use(Pagination)
 Vue.prototype.$message = Message
