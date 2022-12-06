@@ -1,7 +1,6 @@
 import {
   Aside, Breadcrumb,
-  BreadcrumbItem, Button, Card, Col, Container,
-  Form,
+  BreadcrumbItem, Button, Card, Col, Container, Dialog, Form,
   FormItem,
   Header,
   Input,
@@ -9,7 +8,7 @@ import {
   Menu,
   MenuItem,
   MenuItemGroup,
-  Message, Pagination, Row, Submenu, Switch, Table, TableColumn,
+  Message, MessageBox, Pagination, Row, Submenu, Switch, Table, TableColumn,
   Tooltip
 } from 'element-ui'
 import Vue from 'vue'
@@ -36,4 +35,6 @@ Vue.use(TableColumn)
 Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
+Vue.use(Dialog)
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
