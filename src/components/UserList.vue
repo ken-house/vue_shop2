@@ -175,10 +175,7 @@ export default {
     addUser () {
       this.$refs.addFormRef.validate(async (valid) => {
         if (!valid) return
-        const { data: res } = await this.$http.post(
-          '/v1/user-manage/add',
-          this.addForm
-        )
+        const { data: res } = await this.$http.post('/v1/user-manage/add', this.addForm)
         if (res.error) {
           return this.$message.error(res.error.message)
         }
@@ -197,10 +194,8 @@ export default {
     editUser () {
       this.$refs.editFormRef.validate(async (valid) => {
         if (!valid) return
-        const { data: res } = await this.$http.post(
-          '/v1/user-manage/edit',
-          this.editForm
-        )
+        const { data: res } = await this.$http.post('/v1/user-manage/edit', this.editForm)
+        console.log(res)
         if (res.error) {
           return this.$message.error(res.error.message)
         }
@@ -210,15 +205,11 @@ export default {
       })
     },
     async removeUser (uid) {
-      const confirmResult = await this.$confirm(
-        '此操作将永久删除该用户, 是否继续?',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }
-      ).catch((err) => err)
+      const confirmResult = await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch((err) => err)
       if (confirmResult !== 'confirm') {
         return this.$message.info('已取消')
       }
